@@ -3,8 +3,9 @@ import os
 class DevConfig():
     DEBUG = True
     CSRF_ENABLED = True
-    #SECRET_KEY = os.environ['SECRET_KEY']
-    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:pass@localhost/postgres"
+    SQLALCHEMY_DATABASE_URI = "postgresql://sziegler:devpassword@gatorlfpostgres.cfk7jbe8i73l.us-east-1.rds.amazonaws.com:5432/postgres"
+    FLASK_ENV = "development"
+    SECRET_KEY = os.urandom(32)
 
 class TestConfig():
     pass

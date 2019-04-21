@@ -1,12 +1,16 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
-import os
+from flask_wtf.csrf import CSRFProtect
 
-from config import DevConfig
+import os
+import config
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = DevConfig.SQLALCHEMY_DATABASE_URI
+app.config.from_object(config.DevConfig)
+
+csrf = CSRFProtect(app)
+
 db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
